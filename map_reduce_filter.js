@@ -26,6 +26,26 @@ const resultadoArray = array
   .map(getCusto)
 console.log(resultadoArray);
 
+// -
+
+const nums = [1, 2, 3, 4, 5];
+const dobro2 = n => n * 2;
+console.log(nums.map(dobro2));
+
+// -
+// callback com os três parâmetros(valor, índice e array):
+
+  const nums2 = [1, 2, 3, 4, 5];
+  const dobro3 = (valor, index, array) => valor * 2 + index + array.length;
+  console.log(nums2.map(dobro3));
+
+// -
+
+const nomes = ['Ana', 'Bia', 'Gui', 'Lia', 'Rafa'];
+const primeiraLetra = texto => texto[0];
+const letras = nomes.map(primeiraLetra);
+console.log(nomes, letras);
+
 // --------------------------------------
 // filter
 const notas = [7.1, 8.3, 6.3, 7.7, 9.1, 4.3];
