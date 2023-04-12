@@ -63,6 +63,24 @@ const getTotal = item => item.qtde * item.preco;
 const totais = carrinho.map(getTotal);
 console.log(totais);
 
+// - 
+// Implementando uma versão de map(versão oficial):
+
+Array.prototype.meuMap = function(fn) { //Nesse caso não pode ser um arrow function, pois ele não dá acesso a array a partir do this.
+  const novoArray = [];
+  for(let index = 0; index < this.length; index ++) {
+    novoArray.push(fn(this[index], index, this));
+  }; // nesse caso this é o elemento.
+  return novoArray;
+};
+
+const getNome2 = item => item.nome;
+console.log(carrinho.meuMap(getNome2));
+
+const getTotal2 = item => item.qtde * item.preco;
+const totais2 = carrinho.meuMap(getTotal2);
+console.log(totais2);
+
 // --------------------------------------
 // filter
 const notas = [7.1, 8.3, 6.3, 7.7, 9.1, 4.3];
