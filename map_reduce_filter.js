@@ -102,6 +102,33 @@ const qtdeMaiorqueZero = item => item.qtde > 0;
 const itensValidos = carrinho2.filter(qtdeMaiorqueZero);
 console.log(itensValidos);
 
+// -
+// Implementando uma versão de filter(versão oficial):
+const carrinho4 = [
+  { nome: 'Caneta', qtde: 10, preco: 7.99 },
+  { nome: 'Impressora', qtde: 0, preco: 649.50 },
+  { nome: 'Caderno', qtde: 4, preco: 27.10 },
+  { nome: 'Lapis', qtde: 3, preco: 5.82 },
+  { nome: 'Tesoura', qtde: 0, preco: 19.20 },
+];
+
+Array.prototype.meuFilter = function(fn) {
+  const novoArrayFilter = [];
+  for(let index = 0; index < this.length; index++) {
+    if(fn(this[index], index, this)) {
+      novoArrayFilter.push(this[index]);
+    }
+  }
+  return novoArrayFilter;
+}
+
+const getNomeFilter = item => item.nome;
+const qtdeMaiorqueZeroFilter = item => item.qtde > 0;
+const nomeItensValidosFilter = carrinho4
+  .meuFilter(qtdeMaiorqueZeroFilter)
+  .map(getNomeFilter)
+console.log(nomeItensValidosFilter);
+
 // map e filter aplicados juntos, o resultado do map depende do resultado do filter.
 
 const carrinho3 = [
